@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Vishnoi — Aerospace Mechanical Structural Engineer</title>
-    <meta name="description" content="Portfolio of Ankit Vishnoi, Aerospace Mechanical Structural Engineer specializing in structural analysis, CAD design, and FEA simulations.">
-    <meta name="theme-color" content="#0f172a">
+    <title>Ankit Vishnoi | Aerospace Engineer & FEA Expert</title>
     <style>
         * {
             margin: 0;
@@ -13,723 +11,1347 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                sans-serif;
-            background-color: #0f172a;
-            color: #cbd5e1;
-            line-height: 1.6;
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #06b6d4;
+            --accent-alt: #0ea5e9;
+            --gold: #fbbf24;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+            --success: #10b981;
         }
 
-        /* Navigation */
-        nav {
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #0a0e27 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-50px) translateX(30px); }
+        }
+
+        /* Header & Navigation */
+        header {
             position: fixed;
             top: 0;
             width: 100%;
+            z-index: 1000;
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             padding: 1rem 2rem;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav ul {
-            list-style: none;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        nav {
             display: flex;
             gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 100%);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
             max-width: 900px;
-            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .meta-badge {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            font-weight: 500;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 100%);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
-        nav a:hover {
-            color: #0ea5e9;
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4);
         }
 
-        /* Main Container */
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* 3D Background Effect */
+        .hero-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .floating-box {
+            position: absolute;
+            border: 1px solid var(--accent);
+            opacity: 0.2;
+            animation: float-3d 15s infinite ease-in-out;
+        }
+
+        .box-1 { width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s; }
+        .box-2 { width: 200px; height: 200px; top: 60%; right: 15%; animation-delay: 2s; }
+        .box-3 { width: 250px; height: 250px; bottom: 10%; left: 50%; animation-delay: 4s; }
+
+        @keyframes float-3d {
+            0%, 100% { transform: translate(0, 0) rotateX(0deg) rotateY(0deg); }
+            50% { transform: translate(30px, -50px) rotateX(20deg) rotateY(20deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
         main {
-            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 8rem 2rem 4rem;
         }
 
-        /* Header/Hero Section */
-        header {
-            margin-bottom: 4rem;
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            position: relative;
         }
 
-        .intro-subtitle {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
         }
 
-        h1 {
-            font-size: 3.5rem;
-            color: #f1f5f9;
-            margin: 1rem 0;
-            font-weight: 700;
-            line-height: 1.2;
+        /* About Section */
+        .about {
+            background: rgba(30, 41, 59, 0.3);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: #0ea5e9;
-            margin-bottom: 1rem;
-            font-weight: 500;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .meta-info {
-            color: #94a3b8;
-            font-size: 0.95rem;
+        .about-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
             margin-bottom: 1.5rem;
         }
 
-        .meta-info span {
-            margin-right: 1.5rem;
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
         }
 
-        .header-description {
-            max-width: 700px;
-            color: #cbd5e1;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
-        .expertise-highlight {
-            color: #0ea5e9;
-            font-weight: 500;
+        .stat-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border: 1px solid var(--accent);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .cta-buttons {
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+            border-color: var(--gold);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-1px);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-alt) 50%, var(--border) 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 52%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+
+        .timeline-content {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-company {
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .achievement-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .achievement-list li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .achievement-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(30, 41, 59, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
             display: flex;
-            gap: 1rem;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 5px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background: var(--primary);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .cert-name {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cert-issuer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Education Section */
+        .education {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border-top: 1px solid var(--border);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .education-card {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .degree {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .study-period {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Publications Section */
+        .publications {
+            background: var(--primary);
+        }
+
+        .publication-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .publication-item {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateX(10px);
+        }
+
+        .publication-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-journal {
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 3rem;
         }
 
-        .btn {
-            padding: 0.85rem 1.75rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: 1.5px solid #0ea5e9;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background-color: #0ea5e9;
-            color: #0f172a;
-        }
-
-        .btn-primary:hover {
-            background-color: #06b6d4;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #0ea5e9;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(14, 165, 233, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Social Links */
-        .social-links {
+        .contact-item {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .social-links a:hover {
-            color: #0ea5e9;
-        }
-
-        /* Sections */
-        section {
-            margin-bottom: 5rem;
-            scroll-margin-top: 5rem;
-        }
-
-        .section-number {
-            color: #0ea5e9;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: #f1f5f9;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid rgba(14, 165, 233, 0.2);
-            padding-bottom: 1rem;
-        }
-
-        /* Experience */
-        .job {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .job:last-child {
-            border-bottom: none;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .job-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #f1f5f9;
-        }
-
-        .company {
-            color: #0ea5e9;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .job-duration {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .job-description {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .job-description li {
-            margin-left: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills */
-        .skills-category {
-            margin-bottom: 2.5rem;
-        }
-
-        .skills-title {
-            font-weight: 600;
-            color: #f1f5f9;
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .skill-tag {
-            background-color: rgba(14, 165, 233, 0.12);
-            color: #0ea5e9;
-            padding: 0.6rem 1.2rem;
-            border-radius: 0.375rem;
-            font-size: 0.9rem;
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            transition: all 0.3s;
-        }
-
-        .skill-tag:hover {
-            background-color: rgba(14, 165, 233, 0.2);
-            border-color: rgba(14, 165, 233, 0.5);
-        }
-
-        /* Projects */
-        .project {
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            padding: 1.75rem;
-            border-radius: 0.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s;
-            background-color: rgba(15, 23, 42, 0.5);
-        }
-
-        .project:hover {
-            border-color: rgba(14, 165, 233, 0.5);
-            background-color: rgba(14, 165, 233, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #0ea5e9;
-        }
-
-        .project-title a {
-            color: #0ea5e9;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .project-title a:hover {
-            color: #06b6d4;
-        }
-
-        .project-duration {
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        .project-description {
-            color: #cbd5e1;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        .project-description li {
-            margin-left: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .tech-tag {
-            background-color: rgba(148, 163, 184, 0.1);
-            color: #cbd5e1;
-            padding: 0.4rem 0.9rem;
-            border-radius: 0.25rem;
-            font-size: 0.85rem;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            transition: all 0.3s;
-        }
-
-        .tech-tag:hover {
-            background-color: rgba(14, 165, 233, 0.15);
-            color: #0ea5e9;
-            border-color: rgba(14, 165, 233, 0.3);
-        }
-
-        /* Education */
-        .education-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .education-item:last-child {
-            border-bottom: none;
-        }
-
-        .degree-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #f1f5f9;
-            margin-bottom: 0.25rem;
-        }
-
-        .university {
-            color: #0ea5e9;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .education-period {
-            color: #94a3b8;
+        .contact-label {
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        /* Certifications */
-        .cert-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            border-left: 3px solid #0ea5e9;
-            background-color: rgba(14, 165, 233, 0.05);
-            border-radius: 0.25rem;
-        }
-
-        .cert-name {
+        .contact-value {
+            color: var(--accent);
             font-weight: 600;
-            color: #f1f5f9;
-            margin-bottom: 0.25rem;
+            font-size: 1rem;
         }
 
-        .cert-issuer {
-            color: #0ea5e9;
-            font-size: 0.95rem;
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(6, 182, 212, 0.4);
         }
 
         /* Footer */
         footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid rgba(148, 163, 184, 0.1);
-            color: #94a3b8;
-            margin-top: 4rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            nav ul {
+            header {
+                flex-direction: column;
                 gap: 1rem;
-                font-size: 0.85rem;
             }
 
-            main {
-                padding: 6rem 1rem 2rem;
+            nav {
+                gap: 1rem;
+                font-size: 0.8rem;
             }
 
-            .cta-buttons {
-                flex-direction: column;
+            .hero h1 {
+                font-size: 2rem;
             }
 
-            .btn {
-                width: 100%;
-                text-align: center;
+            .hero-meta {
+                gap: 1rem;
             }
 
-            .job-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .about-content {
+                grid-template-columns: 1fr;
             }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 10px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            @supports (display: flex) {
+                nav {
+                    display: flex;
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="bg-particles">
+        <div class="particle" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
+        <div class="particle" style="width: 60px; height: 60px; top: 60%; right: 10%;"></div>
+        <div class="particle" style="width: 80px; height: 80px; bottom: 20%; left: 20%;"></div>
+        <div class="particle" style="width: 50px; height: 50px; top: 40%; right: 5%;"></div>
+    </div>
 
-    <!-- Main Content -->
+    <header>
+        <div class="logo">ANKIT VISHNOI</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <a href="#" class="cta-btn" onclick="downloadResume()">Resume ↓</a>
+        </nav>
+    </header>
+
     <main>
-        <!-- Header Section -->
-        <header id="about">
-            <p class="intro-subtitle">Hello, my name is</p>
-            <h1>Ankit Vishnoi</h1>
-            <p class="subtitle">Aerospace Mechanical Structural Engineer</p>
-            <p class="meta-info">
-                <span>📍 Mumbai, India</span>
-                <span>Open to opportunities</span>
-            </p>
-
-            <p class="header-description">
-                I'm a mechanical engineer specializing in <span class="expertise-highlight">structural analysis, CAD design, and finite element analysis (FEA)</span>. 
-                With expertise in aerospace structures, I design and analyze complex systems using <span class="expertise-highlight">CATIA, ANSYS, and Python</span>. 
-                Passionate about optimizing structural performance, reducing weight in designs, and solving challenging engineering problems through computational methods.
-            </p>
-
-            <div class="cta-buttons">
-                <a href="mailto:ankit209ee@example.com" class="btn btn-primary">Get in touch</a>
-                <a href="https://github.com/ankit209ee" class="btn btn-secondary">GitHub</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background">
+                <div class="floating-box box-1"></div>
+                <div class="floating-box box-2"></div>
+                <div class="floating-box box-3"></div>
             </div>
+            <div class="hero-content">
+                <h1>Aerospace Engineer<br>& FEA Specialist</h1>
+                <p class="hero-subtitle">Structural Analysis • Composite Materials • Additive Manufacturing</p>
+                
+                <div class="hero-meta">
+                    <span class="meta-badge">4+ Years Experience</span>
+                    <span class="meta-badge">ANSYS & MATLAB Expert</span>
+                    <span class="meta-badge">IIT Bombay MSc</span>
+                </div>
 
-            <div class="social-links">
-                <a href="https://github.com/ankit209ee">GitHub</a>
-                <a href="https://linkedin.com/in/ankit-vishnoi">LinkedIn</a>
-                <a href="mailto:ankit209ee@example.com">Email</a>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Get In Touch</a>
+                    <a href="https://www.linkedin.com/in/ankit-vishnoi/" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+                </div>
             </div>
-        </header>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a <span class="highlight">Mechanical Aerospace Engineer</span> with 4+ years of specialized experience in aerospace structures, composite materials, and additive manufacturing. My expertise spans advanced FEA simulations, structural analysis, and innovation-driven engineering solutions.
+                    </p>
+                    <p>
+                        Based in <span class="highlight">Abu Dhabi, UAE</span>, I work at <span class="highlight">Halcon System LLC</span> as an Engineer II, leading complex simulations for aerospace and defense applications including UAVs, missile systems, and aircraft components. I hold a <span class="highlight">Master's degree in Aerospace Structures from IIT Bombay</span> with strong foundations in finite element methods and continuum mechanics.
+                    </p>
+                    <p>
+                        My passion lies in <span class="highlight">optimizing structural integrity</span>, developing innovative manufacturing processes, and mentoring engineering teams to achieve excellence in complex aerospace challenges.
+                    </p>
+                </div>
+                <div class="stats-grid fade-in">
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Years in Aerospace</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Major Projects</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">FEA Analyses</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Team Mentored</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Experience Section -->
-        <section id="experience">
-            <div class="section-number">01. career</div>
-            <h2>Experience</h2>
-
-            <div class="job">
-                <div class="company">Aerospace Design Solutions (Current)</div>
-                <div class="job-header">
-                    <div class="job-title">Structural Analysis Engineer</div>
-                    <div class="job-duration">Jan 2023 – Present</div>
+        <section id="experience" class="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Development Engineer (Engineer II)</div>
+                        <div class="timeline-company">Halcon System LLC</div>
+                        <div class="timeline-date">Oct 2024 – Present | Abu Dhabi, UAE</div>
+                        <div class="timeline-description">Leading composite structures, FEA analysis, and additive manufacturing simulations for aerospace platforms.</div>
+                        <ul class="achievement-list">
+                            <li>Developed MATLAB application for composite micro-macro mechanics analysis</li>
+                            <li>Executed wing flutter analysis integrating modal analysis with CFD dynamic mesh</li>
+                            <li>Performed advanced non-linear static FEA for production stream projects</li>
+                            <li>Conducted end-to-end LPBF additive manufacturing simulations in ANSYS</li>
+                            <li>Mentored engineers in ANSYS ACP composite simulation improving team capabilities</li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="job-description">
-                    <ul>
-                        <li>Perform FEA simulations on aircraft fuselage, wing structures, and landing gear systems using ANSYS</li>
-                        <li>Design structural components in CATIA with focus on weight optimization and material efficiency</li>
-                        <li>Develop Python scripts for automated analysis workflows and post-processing of FEA results</li>
-                        <li>Collaborate with aerodynamics and manufacturing teams to ensure design feasibility</li>
-                        <li>Document technical reports and design calculations per aerospace standards (AS9100)</li>
-                    </ul>
-                </p>
-            </div>
 
-            <div class="job">
-                <div class="company">Engineering Consultancy Ltd</div>
-                <div class="job-header">
-                    <div class="job-title">Junior Mechanical Engineer</div>
-                    <div class="job-duration">Jun 2021 – Dec 2022</div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Development Engineer (Engineer I)</div>
+                        <div class="timeline-company">Halcon System LLC</div>
+                        <div class="timeline-date">Mar 2022 – Oct 2024 | Abu Dhabi, UAE</div>
+                        <div class="timeline-description">UAV & defense system design with focus on composite structures and structural validation.</div>
+                        <ul class="achievement-list">
+                            <li>Contributed to fixed-wing UAV and tube-launched munitions design</li>
+                            <li>Led structural simulations for Naval Canister development</li>
+                            <li>Performed composite modeling in ANSYS ACP including mass optimization</li>
+                            <li>Designed tail fin assemblies and mechanical subsystems with 50 km range systems</li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="job-description">
-                    <ul>
-                        <li>Created 3D CAD models and technical drawings for various structural components</li>
-                        <li>Conducted static and dynamic FEA analysis on mechanical assemblies</li>
-                        <li>Performed stress analysis and identified critical failure points</li>
-                        <li>Supported senior engineers in design optimization and cost reduction initiatives</li>
-                    </ul>
-                </p>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Fatigue and Damage Tolerance Intern</div>
+                        <div class="timeline-company">Umlaut Aerospace Company</div>
+                        <div class="timeline-date">Nov 2021 – Feb 2022 | Bangalore, India</div>
+                        <div class="timeline-description">Specialized in airframe structures and fatigue analysis for commercial aircraft components.</div>
+                        <ul class="achievement-list">
+                            <li>Worked on A350WXB door surround structural components</li>
+                            <li>Proficient in fatigue & damage tolerance tools (ISAMI, PATRAN)</li>
+                            <li>Performed static and fatigue calculations and joint analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Mechanical Subject Expert</div>
+                        <div class="timeline-company">Chegg India Pvt. Ltd.</div>
+                        <div class="timeline-date">Apr 2021 – Oct 2021 | India</div>
+                        <div class="timeline-description">Provided technical solutions in mechanical engineering across multiple domains.</div>
+                        <ul class="achievement-list">
+                            <li>Resolved 40-50+ student queries daily in strength of materials and FEM</li>
+                            <li>Specialized in machine design, theory of machines, and engineering mechanics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Graduate Teaching & Research Assistant</div>
+                        <div class="timeline-company">Indian Institute of Technology, Bombay</div>
+                        <div class="timeline-date">Jul 2018 – Jun 2020 | Bombay, India</div>
+                        <div class="timeline-description">Laboratory supervision and research support for aerospace engineering department.</div>
+                        <ul class="achievement-list">
+                            <li>Delivered laboratory sessions in aircraft structures and composite materials</li>
+                            <li>Conducted material testing experiments and analysis</li>
+                            <li>Mentored undergraduate students in structural testing procedures</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills">
-            <div class="section-number">02. toolkit</div>
-            <h2>Skills</h2>
-
-            <div class="skills-category">
-                <div class="skills-title">CAD & Design</div>
-                <div class="skills-list">
-                    <span class="skill-tag">CATIA V5</span>
-                    <span class="skill-tag">AutoCAD</span>
-                    <span class="skill-tag">Solidworks</span>
-                    <span class="skill-tag">Technical Drawing</span>
-                    <span class="skill-tag">3D Modeling</span>
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <div class="skills-title">Analysis & Simulation</div>
-                <div class="skills-list">
-                    <span class="skill-tag">ANSYS</span>
-                    <span class="skill-tag">FEA (Finite Element Analysis)</span>
-                    <span class="skill-tag">Structural Analysis</span>
-                    <span class="skill-tag">Stress Analysis</span>
-                    <span class="skill-tag">Modal Analysis</span>
-                    <span class="skill-tag">CFD</span>
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <div class="skills-title">Programming & Scripting</div>
-                <div class="skills-list">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">MATLAB</span>
-                    <span class="skill-tag">Scripting</span>
-                    <span class="skill-tag">Data Analysis</span>
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <div class="skills-title">Domain Expertise</div>
-                <div class="skills-list">
-                    <span class="skill-tag">Aerospace Structures</span>
-                    <span class="skill-tag">Weight Optimization</span>
-                    <span class="skill-tag">Material Selection</span>
-                    <span class="skill-tag">Composite Materials</span>
-                    <span class="skill-tag">AS9100 Standards</span>
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <div class="skills-title">Tools & Other</div>
-                <div class="skills-list">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Abaqus</span>
-                    <span class="skill-tag">MS Office</span>
-                    <span class="skill-tag">Technical Documentation</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <div class="section-number">03. build</div>
-            <h2>Projects</h2>
-
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-title">
-                        <a href="https://github.com/ankit209ee/3d" target="_blank">3D Structural Analysis Framework</a>
+        <section id="skills" class="skills">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <div class="skill-title">
+                        <div class="skill-icon"></div>
+                        FEA & Simulation Tools
                     </div>
-                    <div class="project-duration">Personal Project</div>
-                </div>
-                <p class="project-description">
-                    A Python-based framework for 3D structural analysis and visualization. Includes modules for finite element method calculations, mesh generation, stress distribution visualization, and automated report generation.
-                    <ul>
-                        <li>Developed custom FEA solver for truss and beam elements</li>
-                        <li>Implemented visualization using matplotlib and VTK</li>
-                        <li>Created utilities for exporting results in industry-standard formats</li>
+                    <ul class="skill-list">
+                        <li>ANSYS Mechanical & APDL</li>
+                        <li>ANSYS ACP (Composite)</li>
+                        <li>ANSYS Additive Suite & LPBF</li>
+                        <li>ANSYS Motion & LS-Dyna</li>
+                        <li>Abaqus with UMAT</li>
+                        <li>PATRAN & ISAMI</li>
                     </ul>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">NumPy</span>
-                    <span class="tech-tag">SciPy</span>
-                    <span class="tech-tag">Visualization</span>
-                    <span class="tech-tag">FEA</span>
                 </div>
-            </div>
 
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-title">Aircraft Wing Structural Design & Optimization</div>
-                    <div class="project-duration">2022 - 2023</div>
-                </div>
-                <p class="project-description">
-                    Designed and analyzed a composite wing structure for a regional aircraft, focusing on weight reduction while maintaining structural integrity.
-                    <ul>
-                        <li>Performed detailed FEA of wing box structure under various load cases</li>
-                        <li>Optimized composite layup using parametric CATIA modeling</li>
-                        <li>Reduced structural weight by 15% through material selection and geometry optimization</li>
-                        <li>Validated design against aerospace certification standards (CS-23)</li>
+                <div class="skill-category fade-in">
+                    <div class="skill-title">
+                        <div class="skill-icon"></div>
+                        CAD & Design
+                    </div>
+                    <ul class="skill-list">
+                        <li>PTC Creo Parametric</li>
+                        <li>SolidWorks</li>
+                        <li>ANSYS SpaceClaim</li>
+                        <li>Autodesk AutoCAD</li>
+                        <li>Generative Design</li>
+                        <li>Lattice Optimization</li>
                     </ul>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">CATIA</span>
-                    <span class="tech-tag">ANSYS</span>
-                    <span class="tech-tag">Composites</span>
-                    <span class="tech-tag">Weight Optimization</span>
                 </div>
-            </div>
 
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-title">Landing Gear Shock Absorption Analysis</div>
-                    <div class="project-duration">2022</div>
-                </div>
-                <p class="project-description">
-                    Analyzed and optimized landing gear shock strut design for improved performance during various landing scenarios.
-                    <ul>
-                        <li>Conducted nonlinear dynamic FEA including material plasticity</li>
-                        <li>Simulated worst-case landing loads and drop test scenarios</li>
-                        <li>Identified design improvements to enhance durability and safety</li>
+                <div class="skill-category fade-in">
+                    <div class="skill-title">
+                        <div class="skill-icon"></div>
+                        Programming & Scripting
+                    </div>
+                    <ul class="skill-list">
+                        <li>MATLAB & App Development</li>
+                        <li>Python</li>
+                        <li>Fortran</li>
+                        <li>C Programming</li>
+                        <li>VBA</li>
+                        <li>APDL Scripting</li>
                     </ul>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">ANSYS</span>
-                    <span class="tech-tag">Dynamic Analysis</span>
-                    <span class="tech-tag">Nonlinear FEA</span>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-title">
+                        <div class="skill-icon"></div>
+                        Specialized Analysis
+                    </div>
+                    <ul class="skill-list">
+                        <li>Static & Non-linear FEA</li>
+                        <li>Modal & Vibration Analysis</li>
+                        <li>Flutter Analysis</li>
+                        <li>Fatigue & Damage Tolerance</li>
+                        <li>Composite Failure Analysis</li>
+                        <li>Thermal & Stress Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-title">
+                        <div class="skill-icon"></div>
+                        Materials & Manufacturing
+                    </div>
+                    <ul class="skill-list">
+                        <li>Composite Structures</li>
+                        <li>Fiber Reinforced Composites</li>
+                        <li>Additive Manufacturing</li>
+                        <li>Laser Powder Bed Fusion</li>
+                        <li>Metal Alloys & Plastics</li>
+                        <li>Material Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-title">
+                        <div class="skill-icon"></div>
+                        Office & Other Tools
+                    </div>
+                    <ul class="skill-list">
+                        <li>Microsoft Office Suite</li>
+                        <li>LaTeX & Technical Writing</li>
+                        <li>Origin Pro</li>
+                        <li>PTC Mathcad</li>
+                        <li>Maple</li>
+                        <li>Project Management</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- Certifications Section -->
-        <section id="certifications">
-            <div class="section-number">04. credentials</div>
-            <h2>Certifications</h2>
-
-            <div class="cert-item">
-                <div class="cert-name">ANSYS Certified Associate - Mechanical</div>
-                <div class="cert-issuer">ANSYS Inc. • 2023</div>
-            </div>
-
-            <div class="cert-item">
-                <div class="cert-name">Advanced CAD Design with CATIA V5</div>
-                <div class="cert-issuer">Dassault Systèmes • 2022</div>
-            </div>
-
-            <div class="cert-item">
-                <div class="cert-name">Aerospace Structures & Materials</div>
-                <div class="cert-issuer">Professional Development Course • 2021</div>
+        <section id="certifications" class="certifications">
+            <h2 class="section-title">Certifications & Training</h2>
+            <div class="cert-grid">
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Google Project Management: Professional Certificate</div>
+                    <div class="cert-issuer">Google Career Certificates</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Composite (ACP)</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Additive Simulations</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Laser Powder Bed Fusion</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS LS-Dyna & Explicit</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Non-linear Analysis</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Modal & Vibration</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Motion Analysis</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ANSYS Advanced Material Modelling</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Design and Modelling Adhesives</div>
+                    <div class="cert-issuer">ANSYS Official Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Geometric Dimensioning & Tolerancing</div>
+                    <div class="cert-issuer">Professional Certification</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Simcenter Ground Vibration Testing</div>
+                    <div class="cert-issuer">Siemens Training</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Introduction to Systems Engineering</div>
+                    <div class="cert-issuer">Professional Specialization</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Autonomous Aerospace Systems</div>
+                    <div class="cert-issuer">Professional Specialization</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">ICME For Metals</div>
+                    <div class="cert-issuer">Integrated Computational Materials Engineering</div>
+                </div>
+                <div class="cert-card fade-in">
+                    <div class="cert-name">Fundamentals of Flight Mechanics</div>
+                    <div class="cert-issuer">Professional Specialization</div>
+                </div>
             </div>
         </section>
 
         <!-- Education Section -->
-        <section id="education">
-            <div class="section-number">05. background</div>
-            <h2>Education</h2>
-
-            <div class="education-item">
-                <div class="degree-title">B.Tech — Mechanical Engineering</div>
-                <div class="university">Mumbai Institute of Technology (MIT)</div>
-                <div class="education-period">2017 – 2021</div>
-                <p style="color: #cbd5e1; margin-top: 0.5rem;">Specialization in Aerospace & Design | CGPA: 8.2/10</p>
+        <section id="education" class="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card fade-in">
+                    <div class="degree">Masters of Technology</div>
+                    <div class="institution">Aerospace Structures</div>
+                    <div style="color: var(--gold); margin-bottom: 1rem;">Indian Institute of Technology, Bombay</div>
+                    <div class="study-period">2018 – 2020</div>
+                </div>
+                <div class="education-card fade-in">
+                    <div class="degree">Bachelors of Technology</div>
+                    <div class="institution">Aeronautical Engineering</div>
+                    <div style="color: var(--gold); margin-bottom: 1rem;">Dr A. P. J. Abdul Kalam Technical University, Lucknow</div>
+                    <div class="study-period">2014 – 2018</div>
+                </div>
             </div>
+        </section>
 
-            <div class="education-item">
-                <div class="degree-title">XII — Science Stream</div>
-                <div class="university">Delhi Public School, Mumbai</div>
-                <div class="education-period">2015 – 2017</div>
+        <!-- Publications Section -->
+        <section class="publications">
+            <h2 class="section-title">Research Publications</h2>
+            <div class="publication-list">
+                <div class="publication-item fade-in">
+                    <div class="publication-title">Analysis for a self-sustainable mini gas turbine engine for domestic purposes</div>
+                    <div class="publication-journal">International Journal of Technical Innovation in Modern Engineering & Science</div>
+                </div>
+                <div class="publication-item fade-in">
+                    <div class="publication-title">Effect of Global Acceleration in the Acoustic Response of Premixed Flame and Analysis of Acoustic Instability of Combustion Chamber</div>
+                    <div class="publication-journal">International Journal of Technical Innovation in Modern Engineering & Science</div>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
-            <div class="section-number">06. what's next?</div>
-            <h2>Get In Touch</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.05rem;">
-                I'm always interested in challenging projects, collaborations, and opportunities in aerospace engineering. 
-                Whether you have a role, project, or just want to discuss structural design — feel free to reach out!
-            </p>
-            <div class="cta-buttons">
-                <a href="mailto:ankit209ee@example.com" class="btn btn-primary">Send me an email</a>
-                <a href="https://github.com/ankit209ee" class="btn btn-secondary">View my GitHub</a>
+        <section id="contact" class="contact">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">UAE Phone</div>
+                    <a href="tel:+971507014883" class="contact-value" style="text-decoration: none;">+971 50 701 4883</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">India Phone</div>
+                    <a href="tel:+917351975515" class="contact-value" style="text-decoration: none;">+91 735 197 5515</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:ankit209ee@gmail.com" class="contact-value" style="text-decoration: none;">ankit209ee@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">Abu Dhabi, UAE</div>
+                </div>
             </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/ankit-vishnoi/" target="_blank" class="social-link" title="LinkedIn">in</a>
+                <a href="mailto:ankit209ee@gmail.com" class="social-link" title="Email">✉</a>
+            </div>
+            <button class="btn-primary" style="margin-top: 2rem;" onclick="downloadResume()">Download Resume</button>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>Designed & built by Ankit Vishnoi • 2026</p>
+        <p>&copy; 2024 Ankit Vishnoi. All rights reserved. | Designed with precision and innovation | Abu Dhabi, UAE</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    observer.unobserve(entry.target);
                 }
             });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Download Resume Function
+        function downloadResume() {
+            const resumeText = `ANKIT VISHNOI
+Engineer II | Aerospace Structures & FEA Specialist
++971 50 701 4883 | +91 735 197 5515
+ankit209ee@gmail.com
+Abu Dhabi, UAE | LinkedIn: linkedin.com/in/ankit-vishnoi
+
+PROFESSIONAL SUMMARY
+Mechanical Aerospace Engineer with 4+ years of experience in aerospace structures, composite materials, and additive manufacturing, specialising in advanced FEA and simulation tools. Expertise spans static, dynamic, and vibration analysis; composite design and failure evaluation; fatigue and damage tolerance; and end-to-end additive manufacturing simulations.
+
+KEY ACHIEVEMENTS
+• Led 50+ FEA analyses for aerospace and defense applications
+• Developed MATLAB applications for composite mechanics analysis
+• Executed wing flutter analysis integrating modal analysis with CFD
+• Conducted end-to-end LPBF additive manufacturing simulations
+• Mentored 20+ engineers in ANSYS ACP composite simulation
+
+PROFESSIONAL EXPERIENCE
+
+Development Engineer (Engineer II)
+Halcon System LLC | Oct 2024 – Present | Abu Dhabi, UAE
+• Composite Structures & Materials Engineering
+• Structural Analysis & Finite Element Analysis
+• Additive Manufacturing Simulation (LPBF)
+• Airframe & Aerospace Structural Design
+
+Development Engineer (Engineer I)
+Halcon System LLC | Mar 2022 – Oct 2024 | Abu Dhabi, UAE
+• UAV & Defence System Design
+• Composite Structures & FEA
+• Cross-Functional Collaboration
+
+TECHNICAL SKILLS
+FEA Tools: ANSYS, Abaqus, PATRAN
+CAD: Creo, SolidWorks, SpaceClaim
+Programming: MATLAB, Python, Fortran, C, VBA
+Specialized: Flutter Analysis, Composite Design, AM Simulation, Fatigue Analysis
+
+EDUCATION
+M.Tech Aerospace Structures | IIT Bombay (2018-2020)
+B.Tech Aeronautical Engineering | AKTU Lucknow (2014-2018)
+
+CERTIFICATIONS
+20+ ANSYS Professional Certifications
+Google Project Management Certificate
+Systems Engineering Specialization
+Additive Manufacturing Process Certification`;
+
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resumeText));
+            element.setAttribute('download', 'Ankit_Vishnoi_Resume.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Particle animation enhancement
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach((particle, index) => {
+            const duration = 15 + Math.random() * 10;
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
         });
     </script>
 </body>
