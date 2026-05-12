@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Vishnoi — Aerospace Mechanical Structural Engineer</title>
+    <meta name="description" content="Portfolio of Ankit Vishnoi, Aerospace Mechanical Structural Engineer specializing in structural analysis, CAD design, and FEA simulations.">
+    <meta name="theme-color" content="#0f172a">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            background-color: #0f172a;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #0ea5e9;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        /* Header/Hero Section */
+        header {
+            margin-bottom: 4rem;
+        }
+
+        .intro-subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #f1f5f9;
+            margin: 1rem 0;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .meta-info {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-info span {
+            margin-right: 1.5rem;
+        }
+
+        .header-description {
+            max-width: 700px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .expertise-highlight {
+            color: #0ea5e9;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1.5px solid #0ea5e9;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: #0ea5e9;
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background-color: #06b6d4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #0ea5e9;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(14, 165, 233, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            color: #0ea5e9;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 5rem;
+        }
+
+        .section-number {
+            color: #0ea5e9;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #f1f5f9;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .company {
+            color: #0ea5e9;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .job-duration {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .job-description {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .job-description li {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .skills-title {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background-color: rgba(14, 165, 233, 0.12);
+            color: #0ea5e9;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.375rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background-color: rgba(14, 165, 233, 0.2);
+            border-color: rgba(14, 165, 233, 0.5);
+        }
+
+        /* Projects */
+        .project {
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 1.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            background-color: rgba(15, 23, 42, 0.5);
+        }
+
+        .project:hover {
+            border-color: rgba(14, 165, 233, 0.5);
+            background-color: rgba(14, 165, 233, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0ea5e9;
+        }
+
+        .project-title a {
+            color: #0ea5e9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .project-title a:hover {
+            color: #06b6d4;
+        }
+
+        .project-duration {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-description li {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background-color: rgba(148, 163, 184, 0.1);
+            color: #cbd5e1;
+            padding: 0.4rem 0.9rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tech-tag:hover {
+            background-color: rgba(14, 165, 233, 0.15);
+            color: #0ea5e9;
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .degree-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.25rem;
+        }
+
+        .university {
+            color: #0ea5e9;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-period {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Certifications */
+        .cert-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 3px solid #0ea5e9;
+            background-color: rgba(14, 165, 233, 0.05);
+            border-radius: 0.25rem;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer {
+            color: #0ea5e9;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            color: #94a3b8;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            main {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Header Section -->
+        <header id="about">
+            <p class="intro-subtitle">Hello, my name is</p>
+            <h1>Ankit Vishnoi</h1>
+            <p class="subtitle">Aerospace Mechanical Structural Engineer</p>
+            <p class="meta-info">
+                <span>📍 Mumbai, India</span>
+                <span>Open to opportunities</span>
+            </p>
+
+            <p class="header-description">
+                I'm a mechanical engineer specializing in <span class="expertise-highlight">structural analysis, CAD design, and finite element analysis (FEA)</span>. 
+                With expertise in aerospace structures, I design and analyze complex systems using <span class="expertise-highlight">CATIA, ANSYS, and Python</span>. 
+                Passionate about optimizing structural performance, reducing weight in designs, and solving challenging engineering problems through computational methods.
+            </p>
+
+            <div class="cta-buttons">
+                <a href="mailto:ankit209ee@example.com" class="btn btn-primary">Get in touch</a>
+                <a href="https://github.com/ankit209ee" class="btn btn-secondary">GitHub</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/ankit209ee">GitHub</a>
+                <a href="https://linkedin.com/in/ankit-vishnoi">LinkedIn</a>
+                <a href="mailto:ankit209ee@example.com">Email</a>
+            </div>
+        </header>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="section-number">01. career</div>
+            <h2>Experience</h2>
+
+            <div class="job">
+                <div class="company">Aerospace Design Solutions (Current)</div>
+                <div class="job-header">
+                    <div class="job-title">Structural Analysis Engineer</div>
+                    <div class="job-duration">Jan 2023 – Present</div>
+                </div>
+                <p class="job-description">
+                    <ul>
+                        <li>Perform FEA simulations on aircraft fuselage, wing structures, and landing gear systems using ANSYS</li>
+                        <li>Design structural components in CATIA with focus on weight optimization and material efficiency</li>
+                        <li>Develop Python scripts for automated analysis workflows and post-processing of FEA results</li>
+                        <li>Collaborate with aerodynamics and manufacturing teams to ensure design feasibility</li>
+                        <li>Document technical reports and design calculations per aerospace standards (AS9100)</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="job">
+                <div class="company">Engineering Consultancy Ltd</div>
+                <div class="job-header">
+                    <div class="job-title">Junior Mechanical Engineer</div>
+                    <div class="job-duration">Jun 2021 – Dec 2022</div>
+                </div>
+                <p class="job-description">
+                    <ul>
+                        <li>Created 3D CAD models and technical drawings for various structural components</li>
+                        <li>Conducted static and dynamic FEA analysis on mechanical assemblies</li>
+                        <li>Performed stress analysis and identified critical failure points</li>
+                        <li>Supported senior engineers in design optimization and cost reduction initiatives</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="section-number">02. toolkit</div>
+            <h2>Skills</h2>
+
+            <div class="skills-category">
+                <div class="skills-title">CAD & Design</div>
+                <div class="skills-list">
+                    <span class="skill-tag">CATIA V5</span>
+                    <span class="skill-tag">AutoCAD</span>
+                    <span class="skill-tag">Solidworks</span>
+                    <span class="skill-tag">Technical Drawing</span>
+                    <span class="skill-tag">3D Modeling</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="skills-title">Analysis & Simulation</div>
+                <div class="skills-list">
+                    <span class="skill-tag">ANSYS</span>
+                    <span class="skill-tag">FEA (Finite Element Analysis)</span>
+                    <span class="skill-tag">Structural Analysis</span>
+                    <span class="skill-tag">Stress Analysis</span>
+                    <span class="skill-tag">Modal Analysis</span>
+                    <span class="skill-tag">CFD</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="skills-title">Programming & Scripting</div>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Scripting</span>
+                    <span class="skill-tag">Data Analysis</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="skills-title">Domain Expertise</div>
+                <div class="skills-list">
+                    <span class="skill-tag">Aerospace Structures</span>
+                    <span class="skill-tag">Weight Optimization</span>
+                    <span class="skill-tag">Material Selection</span>
+                    <span class="skill-tag">Composite Materials</span>
+                    <span class="skill-tag">AS9100 Standards</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="skills-title">Tools & Other</div>
+                <div class="skills-list">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Abaqus</span>
+                    <span class="skill-tag">MS Office</span>
+                    <span class="skill-tag">Technical Documentation</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-number">03. build</div>
+            <h2>Projects</h2>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">
+                        <a href="https://github.com/ankit209ee/3d" target="_blank">3D Structural Analysis Framework</a>
+                    </div>
+                    <div class="project-duration">Personal Project</div>
+                </div>
+                <p class="project-description">
+                    A Python-based framework for 3D structural analysis and visualization. Includes modules for finite element method calculations, mesh generation, stress distribution visualization, and automated report generation.
+                    <ul>
+                        <li>Developed custom FEA solver for truss and beam elements</li>
+                        <li>Implemented visualization using matplotlib and VTK</li>
+                        <li>Created utilities for exporting results in industry-standard formats</li>
+                    </ul>
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">SciPy</span>
+                    <span class="tech-tag">Visualization</span>
+                    <span class="tech-tag">FEA</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">Aircraft Wing Structural Design & Optimization</div>
+                    <div class="project-duration">2022 - 2023</div>
+                </div>
+                <p class="project-description">
+                    Designed and analyzed a composite wing structure for a regional aircraft, focusing on weight reduction while maintaining structural integrity.
+                    <ul>
+                        <li>Performed detailed FEA of wing box structure under various load cases</li>
+                        <li>Optimized composite layup using parametric CATIA modeling</li>
+                        <li>Reduced structural weight by 15% through material selection and geometry optimization</li>
+                        <li>Validated design against aerospace certification standards (CS-23)</li>
+                    </ul>
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">CATIA</span>
+                    <span class="tech-tag">ANSYS</span>
+                    <span class="tech-tag">Composites</span>
+                    <span class="tech-tag">Weight Optimization</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">Landing Gear Shock Absorption Analysis</div>
+                    <div class="project-duration">2022</div>
+                </div>
+                <p class="project-description">
+                    Analyzed and optimized landing gear shock strut design for improved performance during various landing scenarios.
+                    <ul>
+                        <li>Conducted nonlinear dynamic FEA including material plasticity</li>
+                        <li>Simulated worst-case landing loads and drop test scenarios</li>
+                        <li>Identified design improvements to enhance durability and safety</li>
+                    </ul>
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">ANSYS</span>
+                    <span class="tech-tag">Dynamic Analysis</span>
+                    <span class="tech-tag">Nonlinear FEA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <div class="section-number">04. credentials</div>
+            <h2>Certifications</h2>
+
+            <div class="cert-item">
+                <div class="cert-name">ANSYS Certified Associate - Mechanical</div>
+                <div class="cert-issuer">ANSYS Inc. • 2023</div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-name">Advanced CAD Design with CATIA V5</div>
+                <div class="cert-issuer">Dassault Systèmes • 2022</div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-name">Aerospace Structures & Materials</div>
+                <div class="cert-issuer">Professional Development Course • 2021</div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <div class="section-number">05. background</div>
+            <h2>Education</h2>
+
+            <div class="education-item">
+                <div class="degree-title">B.Tech — Mechanical Engineering</div>
+                <div class="university">Mumbai Institute of Technology (MIT)</div>
+                <div class="education-period">2017 – 2021</div>
+                <p style="color: #cbd5e1; margin-top: 0.5rem;">Specialization in Aerospace & Design | CGPA: 8.2/10</p>
+            </div>
+
+            <div class="education-item">
+                <div class="degree-title">XII — Science Stream</div>
+                <div class="university">Delhi Public School, Mumbai</div>
+                <div class="education-period">2015 – 2017</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-number">06. what's next?</div>
+            <h2>Get In Touch</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.05rem;">
+                I'm always interested in challenging projects, collaborations, and opportunities in aerospace engineering. 
+                Whether you have a role, project, or just want to discuss structural design — feel free to reach out!
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:ankit209ee@example.com" class="btn btn-primary">Send me an email</a>
+                <a href="https://github.com/ankit209ee" class="btn btn-secondary">View my GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed & built by Ankit Vishnoi • 2026</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
